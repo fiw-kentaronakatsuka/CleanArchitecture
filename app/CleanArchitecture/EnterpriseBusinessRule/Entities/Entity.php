@@ -1,14 +1,24 @@
 <?php
 namespace App\CleanArchitecture\EnterpriseBusinessRule\Entities;
 
-class Entity
+class Entity implements EntityInterface
 {
     private int $id;
     private int $salary;
 
-    public function __construct(int $id ,int $salary)
+    public function __construct()
+    {
+        $this->id = 0;
+        $this->salary = 0;
+    }
+
+    public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function setSalary(int $salary): void
+    {
         $this->salary = $salary;
     }
 

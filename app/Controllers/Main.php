@@ -5,6 +5,7 @@ use App\Libraries\Core\Util;
 use App\View\View;
 use App\Models\UserModel;
 
+use App\CleanArchitecture\EnterpriseBusinessRule\Entities\Entity;
 use App\CleanArchitecture\InterfaceAdapter\Controller\Controller;
 use App\CleanArchitecture\InterfaceAdapter\Presenter\Presenter;
 use App\CleanArchitecture\InterfaceAdapter\Gateway\DataAccess;
@@ -19,7 +20,8 @@ class Main extends BaseCOntroller
         $userModel = new UserModel;
         $presenter = new Presenter($view);
         $dataAccess = new DataAccess($userModel);
-        $useCaseInteractor = new UseCaseInteractor($presenter, $dataAccess);
+        $entity = new Entity();
+        $useCaseInteractor = new UseCaseInteractor($presenter, $dataAccess, $entity);
         $util = new Util();
         $controller = new Controller($useCaseInteractor, $util);
  
